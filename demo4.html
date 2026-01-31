@@ -1,0 +1,3839 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🛍️ CampusSmart | Smart Campus Shop & Canteen System</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&family=Inter:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Animate.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <!-- Custom CSS -->
+    <style>
+      :root {
+        --primary: #4361ee;
+        --primary-dark: #3a56d4;
+        --secondary: #7209b7;
+        --accent: #f72585;
+        --success: #4cc9f0;
+        --warning: #f8961e;
+        --danger: #f94144;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --gradient-primary: linear-gradient(135deg, #4361ee, #3a0ca3);
+        --gradient-secondary: linear-gradient(135deg, #7209b7, #f72585);
+        --gradient-success: linear-gradient(135deg, #4cc9f0, #4895ef);
+        --gradient-warning: linear-gradient(135deg, #f8961e, #f9c74f);
+        --gradient-dark: linear-gradient(135deg, #212529, #343a40);
+        --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 5px 20px rgba(0, 0, 0, 0.08);
+        --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+        --radius-sm: 10px;
+        --radius-md: 15px;
+        --radius-lg: 20px;
+        --radius-xl: 30px;
+        --transition-fast: 0.2s ease;
+        --transition-normal: 0.3s ease;
+        --transition-slow: 0.5s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        color: var(--dark);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        line-height: 1.3;
+      }
+
+      .display-font {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 900;
+      }
+
+      /* ===== CUSTOM ANIMATIONS ===== */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(5deg);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+        100% {
+          background-position: 1000px 0;
+        }
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
+      }
+
+      .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease forwards;
+      }
+
+      .animate-fade-in-down {
+        animation: fadeInDown 0.6s ease forwards;
+      }
+
+      .animate-fade-in-left {
+        animation: fadeInLeft 0.6s ease forwards;
+      }
+
+      .animate-fade-in-right {
+        animation: fadeInRight 0.6s ease forwards;
+      }
+
+      .animate-scale-in {
+        animation: scaleIn 0.4s ease forwards;
+      }
+
+      .animate-pulse {
+        animation: pulse 2s infinite ease-in-out;
+      }
+
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .animate-bounce {
+        animation: bounce 2s infinite;
+      }
+
+      .animation-delay-100 {
+        animation-delay: 0.1s;
+      }
+
+      .animation-delay-200 {
+        animation-delay: 0.2s;
+      }
+
+      .animation-delay-300 {
+        animation-delay: 0.3s;
+      }
+
+      .animation-delay-500 {
+        animation-delay: 0.5s;
+      }
+
+      .animation-delay-700 {
+        animation-delay: 0.7s;
+      }
+
+      .animation-delay-1000 {
+        animation-delay: 1s;
+      }
+
+      /* ===== CUSTOM SCROLLBAR ===== */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--gradient-primary);
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-dark);
+      }
+
+      /* ===== LOADING ANIMATION ===== */
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.3s ease;
+      }
+
+      .loading-spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(67, 97, 238, 0.1);
+        border-top: 4px solid var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* ===== NAVBAR ===== */
+      .navbar {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        box-shadow: var(--shadow-md);
+        padding: 1rem 0;
+        transition: all var(--transition-normal);
+        z-index: 1000;
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+
+      .navbar.scrolled {
+        padding: 0.8rem 0;
+        box-shadow: var(--shadow-lg);
+      }
+
+      .navbar-brand {
+        font-size: 1.8rem;
+        font-weight: 900;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transition: transform var(--transition-normal);
+      }
+
+      .navbar-brand:hover {
+        transform: scale(1.05);
+      }
+
+      .nav-link {
+        font-weight: 500;
+        margin: 0 0.5rem;
+        color: var(--dark);
+        transition: all var(--transition-fast);
+        position: relative;
+        padding: 0.5rem 0;
+      }
+
+      .nav-link:hover {
+        color: var(--primary);
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--gradient-primary);
+        transition: width var(--transition-normal);
+        border-radius: 3px;
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      .nav-link.active {
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .nav-btn {
+        background: var(--gradient-primary);
+        color: white;
+        border-radius: 50px;
+        padding: 0.5rem 1.5rem;
+        transition: all var(--transition-normal);
+        border: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+      }
+
+      .nav-btn:active {
+        transform: translateY(-1px);
+      }
+
+      .navbar-toggler {
+        border: none;
+        padding: 0.5rem;
+        transition: all var(--transition-fast);
+      }
+
+      .navbar-toggler:focus {
+        box-shadow: none;
+      }
+
+      .navbar-toggler:hover {
+        transform: scale(1.1);
+      }
+
+      /* ===== HERO SECTION ===== */
+      .hero-section {
+        position: relative;
+        padding: 10rem 0 6rem;
+        overflow: hidden;
+        background: linear-gradient(135deg, #f8fafc 0%, #e9ecef 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero-bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 55%;
+        height: 100%;
+        background: url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80")
+          no-repeat center;
+        background-size: cover;
+        border-radius: 0 0 0 150px;
+        opacity: 0.9;
+        transform: translateX(0);
+        transition: transform var(--transition-slow);
+      }
+
+      .hero-bg:hover {
+        transform: translateX(-10px);
+      }
+
+      .hero-bg::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          #f8fafc 0%,
+          transparent 40%,
+          transparent 100%
+        );
+      }
+
+      .hero-title {
+        font-size: clamp(2.2rem, 5vw, 3.8rem);
+        font-weight: 900;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        color: #6c757d;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        line-height: 1.7;
+        opacity: 0;
+        animation: fadeInUp 0.8s ease 0.2s forwards;
+      }
+
+      .hero-btn-group {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease 0.4s forwards;
+      }
+
+      .hero-btn {
+        background: var(--gradient-primary);
+        color: white;
+        border: none;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all var(--transition-normal);
+        box-shadow: 0 10px 25px rgba(67, 97, 238, 0.3);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.7s;
+      }
+
+      .hero-btn:hover::before {
+        left: 100%;
+      }
+
+      .hero-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(67, 97, 238, 0.4);
+      }
+
+      .hero-btn:active {
+        transform: translateY(-2px);
+      }
+
+      .hero-btn-outline {
+        background: transparent;
+        color: var(--primary);
+        border: 2px solid var(--primary);
+        box-shadow: none;
+      }
+
+      .hero-btn-outline:hover {
+        background: var(--gradient-primary);
+        color: white;
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(67, 97, 238, 0.4);
+      }
+
+      /* ===== PARTICLE BACKGROUND ===== */
+      .particles-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .particle {
+        position: absolute;
+        background: var(--primary);
+        border-radius: 50%;
+        opacity: 0.1;
+        animation: float 20s infinite linear;
+      }
+
+      /* ===== SEARCH SECTION ===== */
+      .search-section {
+        background: var(--gradient-primary);
+        padding: 5rem 0;
+        border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+        margin-top: -50px;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 20px 40px rgba(67, 97, 238, 0.2);
+        animation: fadeInUp 0.8s ease 0.6s forwards;
+        opacity: 0;
+      }
+
+      .search-container {
+        max-width: 800px;
+        margin: 0 auto;
+        animation: scaleIn 0.6s ease;
+      }
+
+      .search-title {
+        color: white;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .search-subtitle {
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 2rem;
+      }
+
+      .search-box {
+        background: white;
+        border-radius: var(--radius-lg);
+        padding: 0.5rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        transition: all var(--transition-normal);
+        animation: bounce 2s infinite;
+      }
+
+      .search-box:focus-within {
+        transform: scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .search-input {
+        border: none;
+        padding: 1rem 1.5rem;
+        font-size: 1.1rem;
+        width: 100%;
+        border-radius: var(--radius-lg);
+        transition: all var(--transition-fast);
+      }
+
+      .search-input:focus {
+        outline: none;
+        box-shadow: none;
+      }
+
+      .search-btn {
+        background: var(--gradient-primary);
+        border: none;
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: var(--radius-lg);
+        font-weight: 600;
+        transition: all var(--transition-normal);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+      }
+
+      .search-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+      }
+
+      .search-tags {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+      }
+
+      .search-tag {
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        padding: 0.5rem 1.2rem;
+        font-size: 0.9rem;
+        transition: all var(--transition-fast);
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+      }
+
+      .search-tag:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* ===== STATS SECTION ===== */
+      .stats-section {
+        background: white;
+        border-radius: var(--radius-xl);
+        padding: 4rem 2rem;
+        box-shadow: var(--shadow-lg);
+        margin: 4rem auto;
+        max-width: 1200px;
+        position: relative;
+        overflow: hidden;
+        animation: fadeInUp 0.8s ease;
+      }
+
+      .stats-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: var(--gradient-primary);
+      }
+
+      .stat-card {
+        text-align: center;
+        padding: 2rem 1rem;
+        transition: transform var(--transition-normal);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .stat-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2rem;
+        color: white;
+        box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+        line-height: 1;
+      }
+
+      .stat-text {
+        color: #6c757d;
+        font-weight: 500;
+        font-size: 1.1rem;
+      }
+
+      /* ===== SHOPS SECTION ===== */
+      .shops-section {
+        padding: 4rem 0;
+        animation: fadeInUp 0.8s ease;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 4px;
+        background: var(--gradient-primary);
+        border-radius: 2px;
+      }
+
+      .shop-card {
+        background: white;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        transition: all var(--transition-normal);
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 2rem;
+        border: none;
+        height: 100%;
+        position: relative;
+        animation: scaleIn 0.6s ease;
+      }
+
+      .shop-card:hover {
+        transform: translateY(-15px);
+        box-shadow: var(--shadow-xl);
+      }
+
+      .shop-header {
+        padding: 2.5rem 2rem;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background-size: cover;
+        background-position: center;
+        transition: transform var(--transition-slow);
+      }
+
+      .shop-card:hover .shop-header {
+        transform: scale(1.05);
+      }
+
+      .shop-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+      }
+
+      .general-store .shop-header {
+        background-image: url("https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80");
+      }
+
+      .canteen .shop-header {
+        background-image: url("https://images.unsplash.com/photo-1554679665-f5537f187268?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80");
+      }
+
+      .fruit-shop .shop-header {
+        background-image: url("https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80");
+      }
+
+      .shop-icon {
+        width: 70px;
+        height: 70px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        z-index: 1;
+      }
+
+      .shop-title {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+        z-index: 1;
+        position: relative;
+      }
+
+      .shop-subtitle {
+        font-size: 0.95rem;
+        opacity: 0.9;
+        z-index: 1;
+        position: relative;
+      }
+
+      .shop-body {
+        padding: 2rem;
+      }
+
+      .shop-items-title {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        color: var(--dark);
+        font-weight: 600;
+      }
+
+      .item-card {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        margin-bottom: 1rem;
+        transition: all var(--transition-normal);
+        background: #f8f9fa;
+        border-left: 5px solid var(--primary);
+        animation: fadeInLeft 0.5s ease;
+      }
+
+      .item-card:hover {
+        background: white;
+        transform: translateX(10px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .item-img {
+        width: 70px;
+        height: 70px;
+        border-radius: var(--radius-sm);
+        object-fit: cover;
+        margin-right: 1rem;
+        flex-shrink: 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform var(--transition-normal);
+      }
+
+      .item-card:hover .item-img {
+        transform: scale(1.1);
+      }
+
+      .item-info {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .item-name {
+        font-weight: 600;
+        margin-bottom: 0.2rem;
+        color: var(--dark);
+        font-size: 1.1rem;
+      }
+
+      .item-category {
+        font-size: 0.85rem;
+        color: #6c757d;
+        display: flex;
+        align-items: center;
+      }
+
+      .item-category::before {
+        content: "•";
+        margin-right: 0.5rem;
+        color: var(--primary);
+      }
+
+      .item-price {
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: var(--primary);
+        margin-bottom: 0.3rem;
+      }
+
+      .status-badge {
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: inline-block;
+        transition: all var(--transition-fast);
+      }
+
+      .status-badge.available {
+        background: rgba(76, 201, 240, 0.15);
+        color: #4cc9f0;
+        border: 1px solid rgba(76, 201, 240, 0.3);
+      }
+
+      .status-badge.out-of-stock {
+        background: rgba(248, 37, 133, 0.15);
+        color: #f72585;
+        border: 1px solid rgba(248, 37, 133, 0.3);
+      }
+
+      .view-all-btn {
+        background: transparent;
+        color: var(--primary);
+        border: 2px solid var(--primary);
+        border-radius: 50px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        transition: all var(--transition-normal);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .view-all-btn:hover {
+        background: var(--gradient-primary);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+      }
+
+      /* ===== SEARCH RESULTS ===== */
+      .search-results-section {
+        padding: 4rem 0;
+        animation: fadeInUp 0.8s ease;
+      }
+
+      .results-container {
+        background: white;
+        border-radius: var(--radius-xl);
+        padding: 2.5rem;
+        box-shadow: var(--shadow-lg);
+        margin-top: 2rem;
+        animation: scaleIn 0.6s ease;
+      }
+
+      .results-title {
+        margin-bottom: 1.5rem;
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .results-count {
+        background: var(--gradient-primary);
+        color: white;
+        padding: 0.3rem 1rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 3rem;
+        color: #6c757d;
+      }
+
+      .no-results-icon {
+        font-size: 4rem;
+        color: #dee2e6;
+        margin-bottom: 1.5rem;
+      }
+
+      /* ===== ADMIN MODAL ===== */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1001;
+        backdrop-filter: blur(5px);
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: var(--radius-xl);
+        padding: 2.5rem;
+        max-width: 500px;
+        width: 90%;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: var(--shadow-xl);
+        animation: scaleIn 0.4s ease;
+        position: relative;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #6c757d;
+        cursor: pointer;
+        transition: color var(--transition-fast);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
+      .modal-close:hover {
+        color: var(--danger);
+        background: rgba(249, 65, 68, 0.1);
+      }
+
+      .modal-title {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: var(--dark);
+      }
+
+      .modal-icon {
+        display: block;
+        font-size: 3rem;
+        color: var(--primary);
+        margin: 0 auto 1.5rem;
+        text-align: center;
+      }
+
+      .form-control {
+        padding: 0.75rem 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: var(--radius-md);
+        transition: all var(--transition-fast);
+        font-size: 1rem;
+      }
+
+      .form-control:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        outline: none;
+      }
+
+      .form-label {
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .form-select {
+        padding: 0.75rem 1rem;
+        border: 2px solid #e9ecef;
+        border-radius: var(--radius-md);
+        transition: all var(--transition-fast);
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      .form-select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        outline: none;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--radius-md);
+        font-weight: 600;
+        transition: all var(--transition-normal);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      .btn-primary {
+        background: var(--gradient-primary);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+      }
+
+      .btn-outline-primary {
+        background: transparent;
+        color: var(--primary);
+        border: 2px solid var(--primary);
+      }
+
+      .btn-outline-primary:hover {
+        background: var(--gradient-primary);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+      }
+
+      .btn-lg {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+      }
+
+      .btn-block {
+        width: 100%;
+        display: block;
+      }
+
+      /* ===== ADMIN PANEL ===== */
+      .admin-panel {
+        background: white;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-xl);
+        padding: 2.5rem;
+        margin: 3rem auto;
+        max-width: 1200px;
+        display: none;
+        animation: fadeInUp 0.6s ease;
+      }
+
+      .admin-header {
+        background: var(--gradient-primary);
+        color: white;
+        padding: 2rem;
+        border-radius: var(--radius-lg);
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .admin-title {
+        font-size: 1.8rem;
+        margin: 0;
+      }
+
+      .admin-subtitle {
+        opacity: 0.9;
+        font-size: 1rem;
+      }
+
+      .admin-tabs {
+        border-bottom: 2px solid #e9ecef;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .admin-tab {
+        padding: 1rem 2rem;
+        background: none;
+        border: none;
+        font-weight: 600;
+        color: #6c757d;
+        position: relative;
+        transition: all var(--transition-fast);
+        border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+        cursor: pointer;
+      }
+
+      .admin-tab:hover {
+        color: var(--primary);
+        background: rgba(67, 97, 238, 0.05);
+      }
+
+      .admin-tab.active {
+        color: var(--primary);
+      }
+
+      .admin-tab.active::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--gradient-primary);
+        border-radius: 3px 3px 0 0;
+      }
+
+      .admin-tab-content {
+        display: none;
+        animation: fadeInUp 0.4s ease;
+      }
+
+      .admin-tab-content.active {
+        display: block;
+      }
+
+      .admin-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-bottom: 1.5rem;
+      }
+
+      .admin-table th {
+        background: #f8f9fa;
+        font-weight: 600;
+        color: var(--dark);
+        padding: 1rem;
+        border-bottom: 2px solid #e9ecef;
+        text-align: left;
+      }
+
+      .admin-table td {
+        padding: 1rem;
+        border-bottom: 1px solid #e9ecef;
+        vertical-align: middle;
+      }
+
+      .admin-table tr:hover td {
+        background: rgba(67, 97, 238, 0.02);
+      }
+
+      .admin-table input,
+      .admin-table select {
+        padding: 0.5rem;
+        border: 1px solid #dee2e6;
+        border-radius: var(--radius-sm);
+        width: 100%;
+        max-width: 120px;
+        transition: all var(--transition-fast);
+      }
+
+      .admin-table input:focus,
+      .admin-table select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.1);
+        outline: none;
+      }
+
+      .table-actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .btn-sm {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.875rem;
+      }
+
+      .btn-success {
+        background: var(--gradient-success);
+        color: white;
+      }
+
+      .btn-danger {
+        background: var(--gradient-secondary);
+        color: white;
+      }
+
+      .btn-warning {
+        background: var(--gradient-warning);
+        color: white;
+      }
+
+      /* ===== NOTIFICATIONS ===== */
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 1.5rem;
+        border-radius: var(--radius-md);
+        color: white;
+        font-weight: 500;
+        z-index: 1002;
+        animation:
+          slideInRight 0.3s ease,
+          fadeOut 0.3s ease 2.7s forwards;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        max-width: 350px;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+
+      .notification.success {
+        background: var(--gradient-success);
+      }
+
+      .notification.error {
+        background: var(--gradient-secondary);
+      }
+
+      .notification.warning {
+        background: var(--gradient-warning);
+      }
+
+      .notification.info {
+        background: var(--gradient-primary);
+      }
+
+      .notification-icon {
+        font-size: 1.2rem;
+      }
+
+      /* ===== FOOTER ===== */
+      .footer {
+        background: var(--gradient-dark);
+        color: white;
+        padding: 5rem 0 2rem;
+        margin-top: 5rem;
+      }
+
+      .footer-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .footer-text {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all var(--transition-fast);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .footer-links a:hover {
+        color: white;
+        padding-left: 5px;
+      }
+
+      .footer-links a::before {
+        content: "→";
+        opacity: 0;
+        transition: opacity var(--transition-fast);
+      }
+
+      .footer-links a:hover::before {
+        opacity: 1;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: all var(--transition-normal);
+        text-decoration: none;
+      }
+
+      .social-icon:hover {
+        background: var(--primary);
+        transform: translateY(-5px) rotate(5deg);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .tech-badge {
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.9);
+        padding: 0.4rem 0.8rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        transition: all var(--transition-fast);
+      }
+
+      .tech-badge:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        margin-top: 3rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.9rem;
+      }
+
+      /* ===== RESPONSIVE DESIGN ===== */
+
+      /* Large Desktop (>= 1400px) */
+      @media (min-width: 1400px) {
+        .container {
+          max-width: 1320px;
+        }
+
+        .hero-bg {
+          width: 50%;
+        }
+
+        .shop-card {
+          margin-bottom: 2.5rem;
+        }
+      }
+
+      /* Desktop (992px - 1399px) */
+      @media (min-width: 992px) and (max-width: 1399px) {
+        .hero-bg {
+          width: 55%;
+        }
+
+        .shop-header {
+          min-height: 220px;
+        }
+
+        .stat-card {
+          padding: 1.5rem;
+        }
+      }
+
+      /* Tablet (768px - 991px) */
+      @media (min-width: 768px) and (max-width: 991px) {
+        .navbar {
+          padding: 0.8rem 0;
+        }
+
+        .hero-section {
+          padding: 8rem 0 4rem;
+          min-height: auto;
+        }
+
+        .hero-bg {
+          width: 45%;
+          border-radius: 0 0 0 100px;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .search-section {
+          padding: 4rem 0;
+          margin-top: -40px;
+        }
+
+        .stats-section {
+          padding: 3rem 1.5rem;
+          margin: 3rem auto;
+        }
+
+        .stat-icon {
+          width: 70px;
+          height: 70px;
+          font-size: 1.8rem;
+        }
+
+        .stat-number {
+          font-size: 2.2rem;
+        }
+
+        .shop-header {
+          min-height: 180px;
+          padding: 2rem;
+        }
+
+        .shop-title {
+          font-size: 1.6rem;
+        }
+
+        .admin-panel {
+          padding: 2rem;
+        }
+
+        .admin-tab {
+          padding: 0.8rem 1.5rem;
+          font-size: 0.95rem;
+        }
+
+        .footer {
+          padding: 4rem 0 2rem;
+        }
+      }
+
+      /* Mobile Landscape (576px - 767px) */
+      @media (min-width: 576px) and (max-width: 767px) {
+        .hero-section {
+          padding: 7rem 0 3rem;
+        }
+
+        .hero-bg {
+          display: none;
+        }
+
+        .hero-title {
+          font-size: 2.2rem;
+          text-align: center;
+        }
+
+        .hero-subtitle {
+          text-align: center;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        .hero-btn-group {
+          text-align: center;
+        }
+
+        .search-section {
+          padding: 3rem 0;
+          margin-top: -30px;
+          border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+        }
+
+        .search-box {
+          flex-direction: column;
+          padding: 0;
+          background: transparent;
+          box-shadow: none;
+        }
+
+        .search-input {
+          border-radius: var(--radius-lg);
+          margin-bottom: 1rem;
+          padding: 1rem;
+          background: white;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-btn {
+          width: 100%;
+          padding: 1rem;
+          border-radius: var(--radius-lg);
+        }
+
+        .search-tags {
+          gap: 0.4rem;
+        }
+
+        .search-tag {
+          padding: 0.4rem 1rem;
+          font-size: 0.85rem;
+        }
+
+        .stats-section {
+          padding: 2.5rem 1rem;
+          margin: 2.5rem auto;
+        }
+
+        .stat-card {
+          padding: 1.5rem 0.5rem;
+        }
+
+        .stat-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .stat-number {
+          font-size: 1.8rem;
+        }
+
+        .stat-text {
+          font-size: 1rem;
+        }
+
+        .shops-section {
+          padding: 3rem 0;
+        }
+
+        .section-title {
+          font-size: 2rem;
+          margin-bottom: 2rem;
+        }
+
+        .shop-card {
+          margin-bottom: 1.5rem;
+        }
+
+        .shop-header {
+          min-height: 160px;
+          padding: 1.5rem;
+        }
+
+        .shop-title {
+          font-size: 1.4rem;
+        }
+
+        .shop-body {
+          padding: 1.5rem;
+        }
+
+        .item-card {
+          padding: 0.8rem;
+        }
+
+        .item-img {
+          width: 60px;
+          height: 60px;
+        }
+
+        .item-name {
+          font-size: 1rem;
+        }
+
+        .item-price {
+          font-size: 1.1rem;
+        }
+
+        .admin-panel {
+          padding: 1.5rem;
+          margin: 2rem auto;
+        }
+
+        .admin-header {
+          padding: 1.5rem;
+          flex-direction: column;
+          text-align: center;
+          gap: 1rem;
+        }
+
+        .admin-tabs {
+          overflow-x: auto;
+          flex-wrap: nowrap;
+          padding-bottom: 0.5rem;
+        }
+
+        .admin-tab {
+          padding: 0.75rem 1.2rem;
+          font-size: 0.9rem;
+          white-space: nowrap;
+        }
+
+        .admin-table {
+          display: block;
+          overflow-x: auto;
+        }
+
+        .modal-content {
+          padding: 2rem 1.5rem;
+          width: 95%;
+        }
+
+        .footer {
+          padding: 3rem 0 1.5rem;
+        }
+
+        .footer-title {
+          font-size: 1.6rem;
+        }
+
+        .social-icons {
+          justify-content: center;
+        }
+      }
+
+      /* Mobile Portrait (<= 575px) */
+      @media (max-width: 575px) {
+        .navbar {
+          padding: 0.7rem 0;
+        }
+
+        .navbar-brand {
+          font-size: 1.5rem;
+        }
+
+        .hero-section {
+          padding: 6rem 0 2.5rem;
+          text-align: center;
+        }
+
+        .hero-bg {
+          display: none;
+        }
+
+        .hero-title {
+          font-size: 1.8rem;
+          animation: fadeInDown 0.8s ease forwards;
+        }
+
+        .hero-subtitle {
+          font-size: 1rem;
+          animation: fadeInDown 0.8s ease 0.2s forwards;
+        }
+
+        .hero-btn-group {
+          animation: fadeInDown 0.8s ease 0.4s forwards;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .hero-btn,
+        .btn-outline-primary {
+          width: 100%;
+          max-width: 280px;
+          margin: 0 auto;
+        }
+
+        .search-section {
+          padding: 2.5rem 0;
+          margin-top: -20px;
+          border-radius: 0 0 var(--radius-md) var(--radius-md);
+        }
+
+        .search-title {
+          font-size: 1.5rem;
+        }
+
+        .search-subtitle {
+          font-size: 0.95rem;
+        }
+
+        .search-box {
+          flex-direction: column;
+          padding: 0;
+          background: transparent;
+          box-shadow: none;
+          animation: none;
+        }
+
+        .search-input {
+          border-radius: var(--radius-md);
+          margin-bottom: 1rem;
+          padding: 0.9rem;
+          font-size: 1rem;
+          background: white;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-btn {
+          width: 100%;
+          padding: 0.9rem;
+          border-radius: var(--radius-md);
+          font-size: 1rem;
+        }
+
+        .search-tags {
+          gap: 0.3rem;
+        }
+
+        .search-tag {
+          padding: 0.35rem 0.8rem;
+          font-size: 0.8rem;
+        }
+
+        .stats-section {
+          padding: 2rem 1rem;
+          margin: 2rem auto;
+          border-radius: var(--radius-lg);
+        }
+
+        .stat-card {
+          padding: 1.2rem 0.5rem;
+        }
+
+        .stat-icon {
+          width: 50px;
+          height: 50px;
+          font-size: 1.3rem;
+          margin-bottom: 0.8rem;
+        }
+
+        .stat-number {
+          font-size: 1.5rem;
+        }
+
+        .stat-text {
+          font-size: 0.9rem;
+        }
+
+        .shops-section {
+          padding: 2.5rem 0;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .shop-card {
+          margin-bottom: 1.5rem;
+          border-radius: var(--radius-md);
+        }
+
+        .shop-header {
+          min-height: 140px;
+          padding: 1.2rem;
+          border-radius: var(--radius-md) var(--radius-md) 0 0;
+        }
+
+        .shop-icon {
+          width: 50px;
+          height: 50px;
+          font-size: 1.5rem;
+          margin-bottom: 0.8rem;
+        }
+
+        .shop-title {
+          font-size: 1.3rem;
+          margin-bottom: 0.3rem;
+        }
+
+        .shop-subtitle {
+          font-size: 0.85rem;
+        }
+
+        .shop-body {
+          padding: 1.2rem;
+        }
+
+        .shop-items-title {
+          font-size: 1.1rem;
+          margin-bottom: 1rem;
+        }
+
+        .item-card {
+          padding: 0.7rem;
+          margin-bottom: 0.8rem;
+          border-radius: var(--radius-sm);
+          border-left-width: 3px;
+        }
+
+        .item-img {
+          width: 50px;
+          height: 50px;
+          margin-right: 0.8rem;
+        }
+
+        .item-name {
+          font-size: 0.95rem;
+        }
+
+        .item-category {
+          font-size: 0.8rem;
+        }
+
+        .item-price {
+          font-size: 1rem;
+        }
+
+        .status-badge {
+          padding: 0.3rem 0.7rem;
+          font-size: 0.75rem;
+        }
+
+        .view-all-btn {
+          padding: 0.6rem 1rem;
+          font-size: 0.9rem;
+        }
+
+        .admin-panel {
+          padding: 1.2rem;
+          margin: 1.5rem auto;
+          border-radius: var(--radius-lg);
+        }
+
+        .admin-header {
+          padding: 1.2rem;
+          border-radius: var(--radius-md);
+          flex-direction: column;
+          text-align: center;
+          gap: 0.8rem;
+        }
+
+        .admin-title {
+          font-size: 1.4rem;
+        }
+
+        .admin-subtitle {
+          font-size: 0.9rem;
+        }
+
+        .admin-tabs {
+          overflow-x: auto;
+          flex-wrap: nowrap;
+          padding-bottom: 0.5rem;
+          margin-bottom: 1.5rem;
+          border-bottom: 1px solid #e9ecef;
+        }
+
+        .admin-tab {
+          padding: 0.6rem 1rem;
+          font-size: 0.85rem;
+          min-width: max-content;
+        }
+
+        .admin-table {
+          display: block;
+          overflow-x: auto;
+          font-size: 0.9rem;
+        }
+
+        .admin-table th,
+        .admin-table td {
+          padding: 0.7rem;
+        }
+
+        .modal-content {
+          padding: 1.5rem 1.2rem;
+          width: 95%;
+          border-radius: var(--radius-lg);
+        }
+
+        .modal-title {
+          font-size: 1.4rem;
+          margin-bottom: 1rem;
+        }
+
+        .modal-icon {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+        }
+
+        .form-control,
+        .form-select {
+          padding: 0.6rem 0.8rem;
+          font-size: 0.95rem;
+        }
+
+        .btn {
+          padding: 0.6rem 1rem;
+          font-size: 0.95rem;
+        }
+
+        .btn-lg {
+          padding: 0.8rem 1.5rem;
+          font-size: 1rem;
+        }
+
+        .notification {
+          top: 10px;
+          right: 10px;
+          left: 10px;
+          max-width: none;
+          padding: 0.8rem 1rem;
+          font-size: 0.9rem;
+        }
+
+        .footer {
+          padding: 2.5rem 0 1rem;
+          margin-top: 3rem;
+        }
+
+        .footer-title {
+          font-size: 1.4rem;
+          text-align: center;
+        }
+
+        .footer-text {
+          text-align: center;
+          font-size: 0.95rem;
+        }
+
+        .footer-links {
+          text-align: center;
+        }
+
+        .social-icons {
+          justify-content: center;
+        }
+
+        .tech-stack {
+          justify-content: center;
+        }
+
+        .footer-bottom {
+          font-size: 0.8rem;
+          padding-top: 1.5rem;
+          margin-top: 2rem;
+        }
+      }
+
+      /* Dark Mode Support */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --light: #1a1d21;
+          --dark: #f8f9fa;
+        }
+
+        body {
+          background-color: #121416;
+          color: var(--dark);
+        }
+
+        .navbar,
+        .shop-card,
+        .stats-section,
+        .results-container,
+        .admin-panel,
+        .modal-content,
+        .search-input {
+          background: #1a1d21;
+        }
+
+        .search-box,
+        .item-card {
+          background: #212529;
+        }
+
+        .nav-link,
+        .admin-table th,
+        .form-control,
+        .form-select {
+          color: var(--dark);
+        }
+
+        .form-control,
+        .form-select,
+        .search-input {
+          background: #2d3238;
+          border-color: #495057;
+          color: var(--dark);
+        }
+
+        .item-category {
+          color: #adb5bd;
+        }
+
+        .no-results {
+          color: #adb5bd;
+        }
+
+        .admin-table input,
+        .admin-table select {
+          background: #2d3238;
+          border-color: #495057;
+          color: var(--dark);
+        }
+      }
+
+      /* High Contrast Mode */
+      @media (prefers-contrast: high) {
+        .hero-btn,
+        .nav-btn,
+        .search-btn,
+        .btn-primary {
+          background: var(--primary);
+        }
+
+        .status-badge.available {
+          background: rgba(76, 201, 240, 0.3);
+        }
+
+        .status-badge.out-of-stock {
+          background: rgba(248, 37, 133, 0.3);
+        }
+      }
+
+      /* Reduced Motion */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      /* Print Styles */
+      @media print {
+        .navbar,
+        .hero-bg,
+        .search-section,
+        .admin-panel,
+        .footer,
+        .hero-btn-group,
+        .search-box {
+          display: none !important;
+        }
+
+        .hero-section,
+        .shops-section,
+        .stats-section {
+          padding: 1rem 0;
+        }
+
+        .shop-card {
+          break-inside: avoid;
+          box-shadow: none;
+          border: 1px solid #ddd;
+        }
+
+        body {
+          font-size: 12pt;
+          line-height: 1.4;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+      <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNavbar">
+      <div class="container">
+        <a class="navbar-brand display-font" href="#home">
+          <i class="bi bi-shop me-2"></i>Campus<span style="color: #f72585"
+            >Smart</span
+          >
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#shops">Shops</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#search">Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#stats">Stats</a>
+            </li>
+            <li class="nav-item ms-2">
+              <button
+                class="btn nav-btn"
+                onclick="showAdminLogin()"
+                id="adminBtn"
+              >
+                <i class="bi bi-person-circle me-2"></i>Admin Login
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Admin Login Modal -->
+    <div class="modal-overlay" id="adminLoginModal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="hideAdminLogin()">&times;</button>
+        <div class="text-center mb-4">
+          <i class="bi bi-shield-lock modal-icon animate-pulse"></i>
+          <h3 class="modal-title display-font">Admin Login</h3>
+          <p class="text-muted">
+            Enter your credentials to access the admin panel
+          </p>
+        </div>
+
+        <form onsubmit="loginAdmin(event)">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              placeholder="Enter username"
+              required
+              autocomplete="username"
+            />
+          </div>
+          <div class="mb-4">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Enter password"
+              required
+              autocomplete="current-password"
+            />
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary btn-lg">
+              <i class="bi bi-box-arrow-in-right me-2"></i>Login
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              onclick="hideAdminLogin()"
+            >
+              Cancel
+            </button>
+          </div>
+
+          <div class="text-center mt-4">
+            <p class="text-muted small">Demo credentials: admin / admin123</p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1 class="hero-title animate-fade-in-up">
+              Smart Campus Shop & Canteen System
+            </h1>
+            <p class="hero-subtitle">
+              Check real-time availability, prices, and stock status of items
+              across all campus shops before you visit. Save time, avoid
+              disappointment!
+            </p>
+            <div class="hero-btn-group">
+              <button class="hero-btn me-3 mb-3" onclick="scrollToShops()">
+                <i class="bi bi-shop me-2"></i>Browse Shops
+              </button>
+              <button
+                class="btn btn-outline-primary btn-lg"
+                onclick="showAdminLogin()"
+              >
+                <i class="bi bi-person-circle me-2"></i>Admin Login
+              </button>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="hero-bg animate-float"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Particles -->
+      <div class="particles-container" id="particlesContainer"></div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section" id="search">
+      <div class="container">
+        <div class="search-container">
+          <h2 class="search-title display-font text-center mb-3">
+            Find Your Items Instantly 🔍
+          </h2>
+          <p class="search-subtitle text-center mb-5">
+            Search across all campus shops for items, prices, and availability
+          </p>
+
+          <div class="search-box d-flex mb-4">
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search for items (e.g., 'Notebook', 'Burger', 'Apple')"
+              id="searchInput"
+            />
+            <button
+              class="search-btn"
+              onclick="searchItems()"
+              id="searchButton"
+            >
+              <i class="bi bi-search me-2"></i>Search
+            </button>
+          </div>
+
+          <div class="search-tags">
+            <button class="search-tag" onclick="quickSearch('burger')">
+              🍔 Fast Food
+            </button>
+            <button class="search-tag" onclick="quickSearch('notebook')">
+              📚 Stationery
+            </button>
+            <button class="search-tag" onclick="quickSearch('apple')">
+              🍎 Fruits
+            </button>
+            <button class="search-tag" onclick="quickSearch('water')">
+              💧 Beverages
+            </button>
+            <button class="search-tag" onclick="quickSearch('snacks')">
+              🍫 Snacks
+            </button>
+            <button class="search-tag" onclick="quickSearch('essentials')">
+              🧻 Essentials
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-md-3 col-6 mb-4">
+            <div class="stat-card">
+              <div class="stat-icon animate-float">
+                <i class="bi bi-shop"></i>
+              </div>
+              <h3 class="stat-number">3</h3>
+              <p class="stat-text">Campus Shops</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 mb-4">
+            <div class="stat-card">
+              <div
+                class="stat-icon animate-float"
+                style="animation-delay: 0.5s"
+              >
+                <i class="bi bi-box-seam"></i>
+              </div>
+              <h3 class="stat-number" id="totalItems">15</h3>
+              <p class="stat-text">Total Items</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 mb-4">
+            <div class="stat-card">
+              <div class="stat-icon animate-float" style="animation-delay: 1s">
+                <i class="bi bi-people"></i>
+              </div>
+              <h3 class="stat-number">2.5k+</h3>
+              <p class="stat-text">Students Served</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 mb-4">
+            <div class="stat-card">
+              <div
+                class="stat-icon animate-float"
+                style="animation-delay: 1.5s"
+              >
+                <i class="bi bi-clock-history"></i>
+              </div>
+              <h3 class="stat-number">24/7</h3>
+              <p class="stat-text">Real-time Updates</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shops Section -->
+    <section class="shops-section" id="shops">
+      <div class="container">
+        <h2 class="section-title display-font">Campus Shops 🏪</h2>
+        <p class="text-muted text-center mb-5">
+          Browse items from different shops across campus
+        </p>
+
+        <div class="row g-4">
+          <!-- General Store -->
+          <div class="col-lg-4 col-md-6">
+            <div
+              class="shop-card general-store animate-scale-in animation-delay-100"
+            >
+              <div class="shop-header">
+                <div class="shop-icon">
+                  <i class="bi bi-bag"></i>
+                </div>
+                <h3 class="shop-title">General Store</h3>
+                <p class="shop-subtitle">
+                  Stationery, Snacks, Daily Essentials
+                </p>
+              </div>
+              <div class="shop-body">
+                <h5 class="shop-items-title">Popular Items</h5>
+                <div id="generalStoreItems">
+                  <!-- Items loaded by JavaScript -->
+                </div>
+                <div class="text-center mt-4">
+                  <button class="view-all-btn" onclick="viewShop('general')">
+                    <i class="bi bi-arrow-right-circle me-2"></i>View All Items
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Canteen -->
+          <div class="col-lg-4 col-md-6">
+            <div class="shop-card canteen animate-scale-in animation-delay-200">
+              <div class="shop-header">
+                <div class="shop-icon">
+                  <i class="bi bi-cup-hot"></i>
+                </div>
+                <h3 class="shop-title">Campus Canteen</h3>
+                <p class="shop-subtitle">Food, Beverages, Quick Meals</p>
+              </div>
+              <div class="shop-body">
+                <h5 class="shop-items-title">Popular Items</h5>
+                <div id="canteenItems">
+                  <!-- Items loaded by JavaScript -->
+                </div>
+                <div class="text-center mt-4">
+                  <button class="view-all-btn" onclick="viewShop('canteen')">
+                    <i class="bi bi-arrow-right-circle me-2"></i>View All Items
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fruit Shop -->
+          <div class="col-lg-4 col-md-6">
+            <div
+              class="shop-card fruit-shop animate-scale-in animation-delay-300"
+            >
+              <div class="shop-header">
+                <div class="shop-icon">
+                  <i class="bi bi-apple"></i>
+                </div>
+                <h3 class="shop-title">Fruit Shop</h3>
+                <p class="shop-subtitle">Fresh Fruits, Juices, Smoothies</p>
+              </div>
+              <div class="shop-body">
+                <h5 class="shop-items-title">Popular Items</h5>
+                <div id="fruitShopItems">
+                  <!-- Items loaded by JavaScript -->
+                </div>
+                <div class="text-center mt-4">
+                  <button class="view-all-btn" onclick="viewShop('fruit')">
+                    <i class="bi bi-arrow-right-circle me-2"></i>View All Items
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Results Section -->
+    <section
+      class="search-results-section"
+      id="searchResultsSection"
+      style="display: none"
+    >
+      <div class="container">
+        <div class="results-container">
+          <div id="searchResults">
+            <!-- Search results will appear here -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Admin Panel -->
+    <section class="admin-panel" id="adminPanel">
+      <div class="admin-header">
+        <div>
+          <h2 class="admin-title text-white mb-2">
+            <i class="bi bi-shield-lock me-2"></i>Admin Dashboard
+          </h2>
+          <p class="admin-subtitle text-white mb-0">
+            Welcome, <span id="adminName">Admin</span> | Manage inventory,
+            prices, and shop data
+          </p>
+        </div>
+        <div>
+          <button class="btn btn-light" onclick="logoutAdmin()">
+            <i class="bi bi-box-arrow-right me-2"></i>Logout
+          </button>
+        </div>
+      </div>
+
+      <div class="admin-tabs">
+        <button
+          class="admin-tab active"
+          onclick="switchAdminTab('items')"
+          id="tabItems"
+        >
+          <i class="bi bi-box-seam me-2"></i>Manage Items
+        </button>
+        <button
+          class="admin-tab"
+          onclick="switchAdminTab('shops')"
+          id="tabShops"
+        >
+          <i class="bi bi-shop me-2"></i>Manage Shops
+        </button>
+        <button
+          class="admin-tab"
+          onclick="switchAdminTab('analytics')"
+          id="tabAnalytics"
+        >
+          <i class="bi bi-graph-up me-2"></i>Analytics
+        </button>
+        <button
+          class="admin-tab"
+          onclick="switchAdminTab('orders')"
+          id="tabOrders"
+        >
+          <i class="bi bi-cart me-2"></i>Orders
+        </button>
+      </div>
+
+      <div id="adminTabContent">
+        <!-- Items Tab -->
+        <div class="admin-tab-content active" id="adminItems">
+          <div
+            class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3"
+          >
+            <h4>Inventory Management</h4>
+            <button class="btn btn-primary" onclick="showAddItemModal()">
+              <i class="bi bi-plus-circle me-2"></i>Add New Item
+            </button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Shop</th>
+                  <th>Price (₹)</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                  <th>Last Updated</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminItemsTable">
+                <!-- Admin items loaded by JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Shops Tab -->
+        <div class="admin-tab-content" id="adminShops">
+          <h4 class="mb-4">Shop Management</h4>
+          <div class="row">
+            <div class="col-md-4 mb-4">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <div class="mb-3">
+                    <i
+                      class="bi bi-bag text-primary"
+                      style="font-size: 3rem"
+                    ></i>
+                  </div>
+                  <h5>General Store</h5>
+                  <p class="text-muted" id="generalStoreCount">5 items</p>
+                  <p class="text-muted small">
+                    Updated: <span id="generalStoreTime">Just now</span>
+                  </p>
+                  <div class="table-actions justify-content-center">
+                    <button
+                      class="btn btn-outline-primary btn-sm me-2"
+                      onclick="editShop('general')"
+                    >
+                      <i class="bi bi-pencil"></i> Edit
+                    </button>
+                    <button
+                      class="btn btn-outline-info btn-sm"
+                      onclick="viewShop('general')"
+                    >
+                      <i class="bi bi-eye"></i> View
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <div class="mb-3">
+                    <i
+                      class="bi bi-cup-hot text-danger"
+                      style="font-size: 3rem"
+                    ></i>
+                  </div>
+                  <h5>Campus Canteen</h5>
+                  <p class="text-muted" id="canteenCount">5 items</p>
+                  <p class="text-muted small">
+                    Updated: <span id="canteenTime">Just now</span>
+                  </p>
+                  <div class="table-actions justify-content-center">
+                    <button
+                      class="btn btn-outline-primary btn-sm me-2"
+                      onclick="editShop('canteen')"
+                    >
+                      <i class="bi bi-pencil"></i> Edit
+                    </button>
+                    <button
+                      class="btn btn-outline-info btn-sm"
+                      onclick="viewShop('canteen')"
+                    >
+                      <i class="bi bi-eye"></i> View
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mb-4">
+              <div class="card h-100">
+                <div class="card-body text-center">
+                  <div class="mb-3">
+                    <i
+                      class="bi bi-apple text-success"
+                      style="font-size: 3rem"
+                    ></i>
+                  </div>
+                  <h5>Fruit Shop</h5>
+                  <p class="text-muted" id="fruitShopCount">5 items</p>
+                  <p class="text-muted small">
+                    Updated: <span id="fruitShopTime">Just now</span>
+                  </p>
+                  <div class="table-actions justify-content-center">
+                    <button
+                      class="btn btn-outline-primary btn-sm me-2"
+                      onclick="editShop('fruit')"
+                    >
+                      <i class="bi bi-pencil"></i> Edit
+                    </button>
+                    <button
+                      class="btn btn-outline-info btn-sm"
+                      onclick="viewShop('fruit')"
+                    >
+                      <i class="bi bi-eye"></i> View
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytics Tab -->
+        <div class="admin-tab-content" id="adminAnalytics">
+          <h4 class="mb-4">System Analytics</h4>
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Most Popular Items</h5>
+                  <div id="popularItemsChart">
+                    <!-- Popular items will be loaded here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Low Stock Alert</h5>
+                  <div id="lowStockAlerts">
+                    <!-- Low stock alerts will be loaded here -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Shop Performance</h5>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="text-center p-3">
+                        <h3 class="text-primary" id="totalRevenue">₹2,550</h3>
+                        <p class="text-muted">Total Revenue</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="text-center p-3">
+                        <h3 class="text-success" id="totalOrders">157</h3>
+                        <p class="text-muted">Total Orders</p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="text-center p-3">
+                        <h3 class="text-warning" id="outOfStockItems">3</h3>
+                        <p class="text-muted">Out of Stock Items</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders Tab -->
+        <div class="admin-tab-content" id="adminOrders">
+          <h4 class="mb-4">Recent Orders</h4>
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Student</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTable">
+                <!-- Orders will be loaded here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-4">
+            <h3 class="footer-title">CampusSmart</h3>
+            <p class="footer-text">
+              A smart digital platform that displays availability and prices of
+              items in campus shops and canteens using secure database
+              connectivity.
+            </p>
+            <div class="social-icons">
+              <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="social-icon"
+                ><i class="bi bi-instagram"></i
+              ></a>
+              <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+              <a href="#" class="social-icon"><i class="bi bi-github"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-4 mb-4">
+            <h5 class="text-white mb-3">Quick Links</h5>
+            <ul class="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#shops">Shops</a></li>
+              <li><a href="#search">Search</a></li>
+              <li><a href="#stats">Statistics</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-4 mb-4">
+            <h5 class="text-white mb-3">Campus Shops</h5>
+            <ul class="footer-links">
+              <li>
+                <a href="#" onclick="viewShop('general')">General Store</a>
+              </li>
+              <li>
+                <a href="#" onclick="viewShop('canteen')">Campus Canteen</a>
+              </li>
+              <li><a href="#" onclick="viewShop('fruit')">Fruit Shop</a></li>
+              <li><a href="#" onclick="showAdminLogin()">Admin Login</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-4 mb-4">
+            <h5 class="text-white mb-3">Technology Stack</h5>
+            <div class="tech-stack">
+              <span class="tech-badge">HTML5</span>
+              <span class="tech-badge">CSS3</span>
+              <span class="tech-badge">JavaScript</span>
+              <span class="tech-badge">Bootstrap</span>
+              <span class="tech-badge">PHP</span>
+              <span class="tech-badge">MySQL</span>
+              <span class="tech-badge">REST API</span>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p class="mb-0">
+            © 2023 CampusSmart - Smart Campus Shop & Canteen Availability
+            System. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+      // ===== GLOBAL VARIABLES =====
+      let shopData = {
+        general: {
+          name: "General Store",
+          icon: "bi-bag",
+          lastUpdated: new Date().toISOString(),
+          items: [
+            {
+              id: 1,
+              name: "Notebook",
+              price: 45,
+              status: "available",
+              category: "Stationery",
+              stock: 20,
+              image:
+                "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+            {
+              id: 2,
+              name: "Blue Pen",
+              price: 10,
+              status: "outofstock",
+              category: "Stationery",
+              stock: 0,
+              image:
+                "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+            {
+              id: 3,
+              name: "Mineral Water",
+              price: 20,
+              status: "available",
+              category: "Beverages",
+              stock: 50,
+              image:
+                "https://images.unsplash.com/photo-1523362628745-0c100150b504?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+            {
+              id: 4,
+              name: "Biscuit Pack",
+              price: 25,
+              status: "available",
+              category: "Snacks",
+              stock: 30,
+              image:
+                "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+            {
+              id: 5,
+              name: "Tissue Paper",
+              price: 30,
+              status: "available",
+              category: "Essentials",
+              stock: 40,
+              image:
+                "https://images.unsplash.com/photo-1584697964358-3e14ca57658b?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+          ],
+        },
+        canteen: {
+          name: "Campus Canteen",
+          icon: "bi-cup-hot",
+          lastUpdated: new Date().toISOString(),
+          items: [
+            {
+              id: 6,
+              name: "Cheese Burger",
+              price: 60,
+              status: "available",
+              category: "Fast Food",
+              stock: 25,
+              image:
+                "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+            {
+              id: 7,
+              name: "French Fries",
+              price: 40,
+              status: "available",
+              category: "Fast Food",
+              stock: 35,
+              image:
+                "https://images.unsplash.com/photo-1576107232684-1279f390859f?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+            {
+              id: 8,
+              name: "Tea",
+              price: 15,
+              status: "available",
+              category: "Beverages",
+              stock: 100,
+              image:
+                "https://images.unsplash.com/photo-1561047029-3000c68339ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+            {
+              id: 9,
+              name: "Sandwich",
+              price: 35,
+              status: "outofstock",
+              category: "Fast Food",
+              stock: 0,
+              image:
+                "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+            {
+              id: 10,
+              name: "Noodles",
+              price: 50,
+              status: "available",
+              category: "Fast Food",
+              stock: 20,
+              image:
+                "https://images.unsplash.com/photo-1557872943-16a5ac26437e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+          ],
+        },
+        fruit: {
+          name: "Fruit Shop",
+          icon: "bi-apple",
+          lastUpdated: new Date().toISOString(),
+          items: [
+            {
+              id: 11,
+              name: "Apple",
+              price: 30,
+              status: "available",
+              category: "Fruits",
+              stock: 60,
+              image:
+                "https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+            {
+              id: 12,
+              name: "Banana",
+              price: 8,
+              status: "available",
+              category: "Fruits",
+              stock: 45,
+              image:
+                "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+            {
+              id: 13,
+              name: "Orange",
+              price: 25,
+              status: "outofstock",
+              category: "Fruits",
+              stock: 0,
+              image:
+                "https://images.unsplash.com/photo-1547514701-42782101795e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+            {
+              id: 14,
+              name: "Fruit Juice",
+              price: 40,
+              status: "available",
+              category: "Beverages",
+              stock: 30,
+              image:
+                "https://images.unsplash.com/photo-1600271886742-f049cd451bba?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+            {
+              id: 15,
+              name: "Smoothie",
+              price: 60,
+              status: "available",
+              category: "Beverages",
+              stock: 25,
+              image:
+                "https://images.unsplash.com/photo-1505252585461-04db1eb84625?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+              lastUpdated: new Date().toISOString(),
+            },
+          ],
+        },
+      };
+
+      let isAdminLoggedIn = false;
+      let currentAdmin = null;
+      let itemIdCounter = 15;
+
+      // ===== INITIALIZATION =====
+      document.addEventListener("DOMContentLoaded", function () {
+        // Hide loading overlay
+        setTimeout(() => {
+          document.getElementById("loadingOverlay").style.opacity = "0";
+          setTimeout(() => {
+            document.getElementById("loadingOverlay").style.display = "none";
+          }, 300);
+        }, 800);
+
+        // Initialize page
+        updateStats();
+        loadShopItems("general", "generalStoreItems");
+        loadShopItems("canteen", "canteenItems");
+        loadShopItems("fruit", "fruitShopItems");
+        createParticles();
+
+        // Setup event listeners
+        setupEventListeners();
+
+        // Check for saved admin session
+        checkAdminSession();
+
+        // Setup scroll effects
+        setupScrollEffects();
+
+        // Setup search input
+        document
+          .getElementById("searchInput")
+          .addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+              searchItems();
+            }
+          });
+      });
+
+      // ===== PARTICLE SYSTEM =====
+      function createParticles() {
+        const container = document.getElementById("particlesContainer");
+        const particleCount = window.innerWidth < 768 ? 15 : 30;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+
+          const size = Math.random() * 20 + 5;
+          const posX = Math.random() * 100;
+          const posY = Math.random() * 100;
+          const delay = Math.random() * 5;
+          const duration = Math.random() * 10 + 10;
+          const colors = [
+            "#4361ee",
+            "#7209b7",
+            "#f72585",
+            "#4cc9f0",
+            "#f8961e",
+          ];
+          const color = colors[Math.floor(Math.random() * colors.length)];
+
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+          particle.style.left = `${posX}%`;
+          particle.style.top = `${posY}%`;
+          particle.style.animationDelay = `${delay}s`;
+          particle.style.animationDuration = `${duration}s`;
+          particle.style.backgroundColor = color;
+          particle.style.opacity = Math.random() * 0.1 + 0.05;
+
+          container.appendChild(particle);
+        }
+      }
+
+      // ===== EVENT LISTENERS =====
+      function setupEventListeners() {
+        // Navbar scroll effect
+        window.addEventListener("scroll", handleScroll);
+
+        // Search input focus effect
+        const searchInput = document.getElementById("searchInput");
+        searchInput.addEventListener("focus", () => {
+          searchInput.parentElement.style.transform = "scale(1.02)";
+        });
+
+        searchInput.addEventListener("blur", () => {
+          searchInput.parentElement.style.transform = "scale(1)";
+        });
+      }
+
+      function setupScrollEffects() {
+        // Animate elements on scroll
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-fade-in-up");
+            }
+          });
+        }, observerOptions);
+
+        // Observe all shop cards and stats
+        document.querySelectorAll(".shop-card, .stat-card").forEach((el) => {
+          observer.observe(el);
+        });
+      }
+
+      // ===== SCROLL HANDLERS =====
+      function handleScroll() {
+        const navbar = document.getElementById("mainNavbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+
+        // Update active nav link
+        updateActiveNavLink();
+      }
+
+      function updateActiveNavLink() {
+        const sections = ["home", "shops", "search", "stats"];
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        let currentSection = "";
+        sections.forEach((section) => {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= 100 && rect.bottom >= 100) {
+              currentSection = section;
+            }
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${currentSection}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+
+      // ===== SEARCH FUNCTIONALITY =====
+      function searchItems() {
+        const searchInput = document.getElementById("searchInput");
+        const query = searchInput.value.trim().toLowerCase();
+
+        if (!query) {
+          showNotification("Please enter a search term", "warning");
+          searchInput.focus();
+          return;
+        }
+
+        // Show loading state
+        const searchBtn = document.getElementById("searchButton");
+        const originalText = searchBtn.innerHTML;
+        searchBtn.innerHTML =
+          '<i class="bi bi-hourglass-split me-2"></i>Searching...';
+        searchBtn.disabled = true;
+
+        setTimeout(() => {
+          performSearch(query);
+          searchBtn.innerHTML = originalText;
+          searchBtn.disabled = false;
+        }, 500);
+      }
+
+      function performSearch(query) {
+        const resultsContainer = document.getElementById("searchResults");
+        const resultsSection = document.getElementById("searchResultsSection");
+
+        // Show results section
+        resultsSection.style.display = "block";
+
+        // Find matching items
+        let foundItems = [];
+        let searchCategories = [];
+
+        Object.keys(shopData).forEach((shopType) => {
+          const shop = shopData[shopType];
+
+          shop.items.forEach((item) => {
+            const matchesName = item.name.toLowerCase().includes(query);
+            const matchesCategory = item.category.toLowerCase().includes(query);
+            const matchesShop = shop.name.toLowerCase().includes(query);
+
+            if (matchesName || matchesCategory || matchesShop) {
+              foundItems.push({
+                ...item,
+                shopName: shop.name,
+                shopType: shopType,
+                matchType: matchesName
+                  ? "name"
+                  : matchesCategory
+                    ? "category"
+                    : "shop",
+              });
+
+              if (
+                matchesCategory &&
+                !searchCategories.includes(item.category)
+              ) {
+                searchCategories.push(item.category);
+              }
+            }
+          });
+        });
+
+        // Display results
+        if (foundItems.length === 0) {
+          resultsContainer.innerHTML = `
+                    <div class="no-results animate-fade-in-up">
+                        <div class="no-results-icon">
+                            <i class="bi bi-search"></i>
+                        </div>
+                        <h4 class="mb-3">No items found</h4>
+                        <p class="mb-0">We couldn't find any items matching "${query}"</p>
+                        <p class="text-muted small mt-2">Try searching for something else or use the quick search buttons above</p>
+                    </div>
+                `;
+        } else {
+          resultsContainer.innerHTML = `
+                    <div class="results-title animate-fade-in-down">
+                        <h4 class="mb-0">
+                            <i class="bi bi-search me-2"></i>
+                            Search Results for "${query}"
+                        </h4>
+                        <span class="results-count">${foundItems.length} item${foundItems.length !== 1 ? "s" : ""}</span>
+                    </div>
+                    ${
+                      searchCategories.length > 0
+                        ? `
+                        <div class="mb-4">
+                            <small class="text-muted">Related categories:</small>
+                            <div class="d-flex flex-wrap gap-2 mt-2">
+                                ${searchCategories.map((cat) => `<span class="badge bg-light text-dark">${cat}</span>`).join("")}
+                            </div>
+                        </div>
+                    `
+                        : ""
+                    }
+                    <div id="searchResultsList"></div>
+                `;
+
+          const resultsList = document.getElementById("searchResultsList");
+          resultsList.innerHTML = "";
+
+          foundItems.forEach((item, index) => {
+            setTimeout(() => {
+              const itemElement = createSearchResultItem(item, index);
+              resultsList.appendChild(itemElement);
+            }, index * 100);
+          });
+        }
+
+        // Scroll to results
+        resultsSection.scrollIntoView({ behavior: "smooth" });
+      }
+
+      function createSearchResultItem(item, index) {
+        const element = document.createElement("div");
+        element.className = "item-card animate-fade-in-up";
+        element.style.animationDelay = `${index * 0.1}s`;
+
+        const statusClass =
+          item.status === "available" ? "available" : "out-of-stock";
+        const statusText =
+          item.status === "available" ? "In Stock" : "Out of Stock";
+        const shopBadgeColor =
+          item.shopType === "general"
+            ? "primary"
+            : item.shopType === "canteen"
+              ? "danger"
+              : "success";
+
+        element.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="item-img">
+                <div class="item-info">
+                    <div class="item-name">${item.name}</div>
+                    <div class="item-category">
+                        <span class="badge bg-${shopBadgeColor} me-2">${item.shopName}</span>
+                        ${item.category}
+                        ${item.matchType === "name" ? '<span class="badge bg-info ms-2">Name Match</span>' : ""}
+                        ${item.matchType === "category" ? '<span class="badge bg-success ms-2">Category Match</span>' : ""}
+                    </div>
+                </div>
+                <div class="text-end">
+                    <div class="item-price mb-1 fs-4">₹${item.price}</div>
+                    <div class="status-badge ${statusClass}">${statusText}</div>
+                    <div class="mt-2">
+                        <small class="text-muted">Stock: ${item.stock} units</small>
+                    </div>
+                </div>
+            `;
+
+        return element;
+      }
+
+      function quickSearch(term) {
+        document.getElementById("searchInput").value = term;
+        searchItems();
+      }
+
+      // ===== SHOP DISPLAY =====
+      function loadShopItems(shopType, elementId) {
+        const container = document.getElementById(elementId);
+        const items = shopData[shopType].items.slice(0, 3);
+
+        container.innerHTML = "";
+
+        items.forEach((item, index) => {
+          setTimeout(() => {
+            const itemElement = createShopItemCard(item);
+            container.appendChild(itemElement);
+          }, index * 100);
+        });
+      }
+
+      function createShopItemCard(item) {
+        const element = document.createElement("div");
+        element.className = "item-card";
+
+        const statusClass =
+          item.status === "available" ? "available" : "out-of-stock";
+        const statusText =
+          item.status === "available" ? "In Stock" : "Out of Stock";
+
+        element.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" class="item-img">
+                <div class="item-info">
+                    <div class="item-name">${item.name}</div>
+                    <div class="item-category">${item.category}</div>
+                </div>
+                <div class="text-end">
+                    <div class="item-price mb-1">₹${item.price}</div>
+                    <div class="status-badge ${statusClass}">${statusText}</div>
+                </div>
+            `;
+
+        return element;
+      }
+
+      function viewShop(shopType) {
+        const shop = shopData[shopType];
+        const resultsContainer = document.getElementById("searchResults");
+        const resultsSection = document.getElementById("searchResultsSection");
+
+        resultsContainer.innerHTML = `
+                <div class="results-title animate-fade-in-down">
+                    <h4 class="mb-0">
+                        <i class="bi ${shop.icon} me-2"></i>All Items in ${shop.name}
+                    </h4>
+                    <span class="results-count">${shop.items.length} items</span>
+                </div>
+                <div id="shopItemsList" class="mt-4"></div>
+            `;
+
+        const itemsList = document.getElementById("shopItemsList");
+        shop.items.forEach((item, index) => {
+          setTimeout(() => {
+            const itemElement = createShopItemCard(item);
+            itemsList.appendChild(itemElement);
+          }, index * 100);
+        });
+
+        resultsSection.style.display = "block";
+        resultsSection.scrollIntoView({ behavior: "smooth" });
+      }
+
+      // ===== ADMIN FUNCTIONALITY =====
+      function checkAdminSession() {
+        const savedAdmin = localStorage.getItem("campusSmartAdmin");
+        if (savedAdmin) {
+          try {
+            const adminData = JSON.parse(savedAdmin);
+            if (adminData.loggedIn && adminData.expiry > Date.now()) {
+              isAdminLoggedIn = true;
+              currentAdmin = adminData;
+              showAdminPanel();
+              updateAdminButton();
+            } else {
+              localStorage.removeItem("campusSmartAdmin");
+            }
+          } catch (e) {
+            localStorage.removeItem("campusSmartAdmin");
+          }
+        }
+      }
+
+      function showAdminLogin() {
+        if (isAdminLoggedIn) {
+          showAdminPanel();
+          return;
+        }
+        document.getElementById("adminLoginModal").style.display = "flex";
+        document.getElementById("username").focus();
+      }
+
+      function hideAdminLogin() {
+        document.getElementById("adminLoginModal").style.display = "none";
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+      }
+
+      function loginAdmin(event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // Demo credentials
+        if (username === "admin" && password === "admin123") {
+          isAdminLoggedIn = true;
+          currentAdmin = {
+            username: username,
+            name: "Administrator",
+            loggedIn: true,
+            expiry: Date.now() + 2 * 60 * 60 * 1000,
+          };
+
+          localStorage.setItem(
+            "campusSmartAdmin",
+            JSON.stringify(currentAdmin),
+          );
+
+          showNotification(
+            "Login successful! Welcome to Admin Dashboard.",
+            "success",
+          );
+          hideAdminLogin();
+          showAdminPanel();
+          updateAdminButton();
+          loadAdminItemsTable();
+          loadAdminAnalytics();
+          loadOrders();
+        } else {
+          showNotification(
+            "Invalid credentials! Try: admin / admin123",
+            "error",
+          );
+          document.getElementById("password").value = "";
+          document.getElementById("password").focus();
+        }
+      }
+
+      function logoutAdmin() {
+        isAdminLoggedIn = false;
+        currentAdmin = null;
+        localStorage.removeItem("campusSmartAdmin");
+
+        showNotification("Logged out successfully!", "warning");
+        hideAdminPanel();
+        updateAdminButton();
+      }
+
+      function updateAdminButton() {
+        const adminBtn = document.getElementById("adminBtn");
+        if (isAdminLoggedIn) {
+          adminBtn.innerHTML =
+            '<i class="bi bi-speedometer2 me-2"></i>Dashboard';
+          adminBtn.onclick = showAdminPanel;
+        } else {
+          adminBtn.innerHTML =
+            '<i class="bi bi-person-circle me-2"></i>Admin Login';
+          adminBtn.onclick = showAdminLogin;
+        }
+      }
+
+      function showAdminPanel() {
+        if (!isAdminLoggedIn) {
+          showAdminLogin();
+          return;
+        }
+
+        document.getElementById("adminPanel").style.display = "block";
+        document.getElementById("adminName").textContent = currentAdmin.name;
+        document
+          .getElementById("adminPanel")
+          .scrollIntoView({ behavior: "smooth" });
+
+        loadAdminItemsTable();
+        loadAdminAnalytics();
+        loadOrders();
+      }
+
+      function hideAdminPanel() {
+        document.getElementById("adminPanel").style.display = "none";
+      }
+
+      function switchAdminTab(tabName) {
+        // Update tabs
+        document
+          .querySelectorAll(".admin-tab")
+          .forEach((tab) => tab.classList.remove("active"));
+        document
+          .querySelectorAll(".admin-tab-content")
+          .forEach((content) => content.classList.remove("active"));
+
+        document
+          .getElementById(
+            `tab${tabName.charAt(0).toUpperCase() + tabName.slice(1)}`,
+          )
+          .classList.add("active");
+        document
+          .getElementById(
+            `admin${tabName.charAt(0).toUpperCase() + tabName.slice(1)}`,
+          )
+          .classList.add("active");
+      }
+
+      // ===== UTILITY FUNCTIONS =====
+      function scrollToShops() {
+        document.getElementById("shops").scrollIntoView({ behavior: "smooth" });
+      }
+
+      function updateStats() {
+        let totalItems = 0;
+        Object.keys(shopData).forEach((shopType) => {
+          totalItems += shopData[shopType].items.length;
+        });
+        document.getElementById("totalItems").textContent = totalItems;
+
+        document.getElementById("generalStoreCount").textContent =
+          shopData.general.items.length + " items";
+        document.getElementById("canteenCount").textContent =
+          shopData.canteen.items.length + " items";
+        document.getElementById("fruitShopCount").textContent =
+          shopData.fruit.items.length + " items";
+
+        document.getElementById("generalStoreTime").textContent = formatTime(
+          shopData.general.lastUpdated,
+        );
+        document.getElementById("canteenTime").textContent = formatTime(
+          shopData.canteen.lastUpdated,
+        );
+        document.getElementById("fruitShopTime").textContent = formatTime(
+          shopData.fruit.lastUpdated,
+        );
+      }
+
+      function formatTime(timestamp) {
+        const date = new Date(timestamp);
+        const now = new Date();
+        const diffMs = now - date;
+        const diffMins = Math.floor(diffMs / 60000);
+        const diffHours = Math.floor(diffMs / 3600000);
+
+        if (diffMins < 1) return "Just now";
+        if (diffMins < 60)
+          return `${diffMins} minute${diffMins === 1 ? "" : "s"} ago`;
+        if (diffHours < 24)
+          return `${diffHours} hour${diffHours === 1 ? "" : "s"} ago`;
+
+        return date.toLocaleDateString();
+      }
+
+      function showNotification(message, type) {
+        const notification = document.createElement("div");
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+                <i class="bi ${type === "success" ? "bi-check-circle" : type === "error" ? "bi-exclamation-circle" : "bi-info-circle"} notification-icon"></i>
+                <span>${message}</span>
+            `;
+
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+          notification.remove();
+        }, 3000);
+      }
+
+      // ===== ADMIN SPECIFIC FUNCTIONS =====
+      function loadAdminItemsTable() {
+        const tableBody = document.getElementById("adminItemsTable");
+        tableBody.innerHTML = "";
+
+        let allItems = [];
+        Object.keys(shopData).forEach((shopType) => {
+          shopData[shopType].items.forEach((item) => {
+            allItems.push({
+              ...item,
+              shop: shopData[shopType].name,
+              shopType: shopType,
+            });
+          });
+        });
+
+        allItems.sort(
+          (a, b) => new Date(b.lastUpdated) - new Date(a.lastUpdated),
+        );
+
+        allItems.forEach((item) => {
+          const statusOptions =
+            item.status === "available"
+              ? `<option value="available" selected>Available</option><option value="outofstock">Out of Stock</option>`
+              : `<option value="available">Available</option><option value="outofstock" selected>Out of Stock</option>`;
+
+          const row = document.createElement("tr");
+          row.innerHTML = `
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="${item.image}" alt="${item.name}" style="width: 40px; height: 40px; border-radius: 8px; margin-right: 10px;">
+                            <div>
+                                <div class="fw-semibold">${item.name}</div>
+                                <small class="text-muted">${item.category}</small>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${item.shop}</td>
+                    <td>
+                        <input type="number" class="form-control" value="${item.price}" 
+                               data-id="${item.id}" min="1" step="0.01" style="width: 90px;">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control" value="${item.stock}" 
+                               data-id="${item.id}" min="0" style="width: 80px;">
+                    </td>
+                    <td>
+                        <select class="form-select" data-id="${item.id}" style="width: 130px;">
+                            ${statusOptions}
+                        </select>
+                    </td>
+                    <td>
+                        <small class="text-muted">${formatTime(item.lastUpdated)}</small>
+                    </td>
+                    <td>
+                        <div class="table-actions">
+                            <button class="btn btn-success btn-sm" onclick="saveItemChanges(${item.id})">
+                                <i class="bi bi-check"></i>
+                            </button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteItem(${item.id})">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+
+          tableBody.appendChild(row);
+        });
+      }
+
+      function saveItemChanges(itemId) {
+        const priceInput = document.querySelector(`input[data-id="${itemId}"]`);
+        const stockInput = document.querySelector(
+          `input[data-id="${itemId}"][type="number"]:last-of-type`,
+        );
+        const statusSelect = document.querySelector(
+          `select[data-id="${itemId}"]`,
+        );
+
+        if (!priceInput || !stockInput || !statusSelect) return;
+
+        Object.keys(shopData).forEach((shopType) => {
+          const itemIndex = shopData[shopType].items.findIndex(
+            (item) => item.id === itemId,
+          );
+          if (itemIndex !== -1) {
+            shopData[shopType].items[itemIndex].price = parseFloat(
+              priceInput.value,
+            );
+            shopData[shopType].items[itemIndex].stock = parseInt(
+              stockInput.value,
+            );
+            shopData[shopType].items[itemIndex].status = statusSelect.value;
+            shopData[shopType].items[itemIndex].lastUpdated =
+              new Date().toISOString();
+            shopData[shopType].lastUpdated = new Date().toISOString();
+
+            showNotification(
+              `Item #${itemId} updated successfully!`,
+              "success",
+            );
+            updateStats();
+            loadShopItems(
+              shopType,
+              shopType === "general"
+                ? "generalStoreItems"
+                : shopType === "canteen"
+                  ? "canteenItems"
+                  : "fruitShopItems",
+            );
+          }
+        });
+      }
+
+      function deleteItem(itemId) {
+        if (
+          !confirm(
+            "Are you sure you want to delete this item? This action cannot be undone.",
+          )
+        ) {
+          return;
+        }
+
+        Object.keys(shopData).forEach((shopType) => {
+          const itemIndex = shopData[shopType].items.findIndex(
+            (item) => item.id === itemId,
+          );
+          if (itemIndex !== -1) {
+            shopData[shopType].items.splice(itemIndex, 1);
+            shopData[shopType].lastUpdated = new Date().toISOString();
+            showNotification(
+              `Item #${itemId} deleted successfully!`,
+              "success",
+            );
+            updateStats();
+            loadAdminItemsTable();
+            loadShopItems(
+              shopType,
+              shopType === "general"
+                ? "generalStoreItems"
+                : shopType === "canteen"
+                  ? "canteenItems"
+                  : "fruitShopItems",
+            );
+          }
+        });
+      }
+
+      function loadAdminAnalytics() {
+        // This would be populated with real analytics data
+        // For now, we'll show placeholder data
+        document.getElementById("popularItemsChart").innerHTML = `
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle me-2"></i>
+                    Analytics data would be displayed here in a real application.
+                </div>
+            `;
+
+        document.getElementById("lowStockAlerts").innerHTML = `
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    No low stock items at the moment.
+                </div>
+            `;
+      }
+
+      function loadOrders() {
+        // This would load real orders data
+        document.getElementById("ordersTable").innerHTML = `
+                <tr>
+                    <td colspan="7" class="text-center py-4">
+                        <div class="text-muted">
+                            <i class="bi bi-cart display-4 d-block mb-3"></i>
+                            <p>No recent orders to display</p>
+                            <small>Order tracking would be implemented in a real application</small>
+                        </div>
+                    </td>
+                </tr>
+            `;
+      }
+
+      function editShop(shopType) {
+        showNotification(
+          `Editing ${shopData[shopType].name} - Feature coming soon!`,
+          "info",
+        );
+      }
+
+      function showAddItemModal() {
+        showNotification("Add item feature would open a modal form", "info");
+      }
+    </script>
+  </body>
+</html>
